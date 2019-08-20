@@ -2,8 +2,10 @@
 #from __future__ import braces
 import this
 import numpy as np
+import antigravity
+# James is responsible for antigravity
 
-# Done 1, 2, 6, 10
+# Various examples from different places for a tutorial on being more pythonic
 
 # Number 1 and number 10
 print('############################  Examples 1 and 10 ################')
@@ -12,7 +14,7 @@ print('Errors should never pass sielently.')
 colors = ['red', 'green', 'blue', 'yellow']
 
 # Bad
-for i in range(len(colors)-1, -1, -1):
+for i in range(len(colors), -1, -1):
     try:
         print(colors[i])
     except:
@@ -39,11 +41,15 @@ value_pi = pi
 print('############################  Example 3 ################')
 print('Simple is better than complex')
 
+
 class acolor:
+
     def __init__(self, color):
         self.color = color
+
     def get_color(self):
         return self.color
+
 
 blah = acolor('red')
 print(blah)
@@ -61,44 +67,35 @@ double = list(map(lambda x: x * 2, val))
 print(double)
 
 # Complex
-import numpy as np
 val = np.asarray(val)
 print(list(val*2))
 
 print('############################  Example 5 ################')
 print('Flat is better than nested.')
-def myfunc(a, b, c):
-    if a > 10:
-        if b > 10:
-            if c > 10:
-                return a + b + c
-    return None
 
-def myfunc_better(a, b, c):
-    if a <= 10:
-        return None
-    if b <= 10:
-        return None
-    if c <= 10:
-        return None
-    return a + b + c
+for i in range(10):
+    for j in range(i):
+        print(i, end='')
 
-def myfunc_possibly_even_better(a, b, c):
-    if (a > 10) and (b > 10) and (c > 10):
-        return a + b + c
-    else:
-        return None
+    print()
+
+for i in range(1, 10):
+    print(str(i)*i)
+
 
 print('############################  Example 6 and 7 ################')
 print('Sparse is better than nested.')
 print('Readability counts.')
-print('\n'.join("%i bytes = %i bits which has %i possible values." % (j, j*8, 256**j-1) for j in (1 << i for i in range(8))))
+print('\n'.join("%i bytes = %i bits which has %i possible values." %
+      (j, j*8, 256**j-1) for j in (1 << i for i in range(8))))
 
 print('############################  Example 12 ################')
 print('In the face of ambiguity, refuse the temptation to guess.')
 
-# You need to know the types you are using and how various things change based on type
+# You need to know the types you are using and
+# how various things change based on type
 numbers = range(10)
+numbers = [*numbers]
 
 print(numbers*10)
 print(np.asarray(numbers)*10)
@@ -107,8 +104,8 @@ print('############################  Examples 15 and 16 ################')
 print('Now is better than never.')
 print('Although never is often better than *right* now.')
 
-# Write good code the first time, but don't fixate on writing code so carefully it
-# never gets done.
+# Write good code the first time, but don't fixate
+# on writing code so carefully it never gets done.
 
 # Go to https://github.com/aringler-usgs/HVratios to see an example.
 
@@ -118,19 +115,22 @@ print('Although never is often better than *right* now.')
 print('############################  Example 19 ################')
 print('Namespaces are one honking great idea -- let\'s do more of those!')
 
+
 # Use modules, use functions, import your own modules.
 def outer_function():
     # variable a in the outer_function local name space
     a = 20
+
     def inner_function():
         # variable in the inner function namespace
         a = 30
-        print('a =',a)
+        print('a =', a)
 
     inner_function()
-    print('a =',a)
+    print('a', a)
+
 
 # Global name space
 a = 10
 outer_function()
-print('a =',a)
+print('a =', a)
